@@ -1,0 +1,43 @@
+*{
+    margin-left: 5px;
+}
+
+label{
+    padding: 10px;
+}
+
+.button-class{
+    padding: 15px;
+    float: left;
+}
+.button-class-small{
+    padding: 5px;
+
+}
+
+table {
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    text-indent: initial;
+    border-spacing: 2px;
+    border-color: gray;
+}
+
+th {
+    background-color: brown;
+    color: white;
+    padding: 10px;
+}
+
+td{
+    padding: 5px;
+    display: table-cell;
+    vertical-align: inherit;
+
+}
+
+.error-message {
+    color: red; 
+  }
+

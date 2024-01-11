@@ -1,0 +1,129 @@
+<div class="card">
+  <div>
+    Reactive form example
+  </div>
+  <div>
+    <button (click)="addUser()" class="button-class">
+      Add User
+    </button>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="regForm" (ngSubmit)="submitForm()">
+
+      <div class="form-group col">
+        <label>First Name</label>
+        <input formControlName="firstName" type="text">
+        <div *ngIf="formValues.firstName.invalid && (formValues.firstName.dirty || formValues.firstName.touched)">
+          <span class="error-message">Last Name is required</span>
+        </div>
+      </div>
+
+      <div class="form-group col">
+        <label>Last Name</label>
+        <input formControlName="lastName" type="text">
+        <div *ngIf="formValues.lastName.invalid && (formValues.lastName.dirty || formValues.lastName.touched)">
+          <span class="error-message">Last Name is required</span>
+        </div>
+      </div>
+
+      <div class="form-group col">
+        <label>Email</label>
+        <input formControlName="email" type="email">
+        <div *ngIf="formValues.email.invalid && (formValues.email.dirty || formValues.email.touched)">
+          <span class="error-message" *ngIf="formValues.email.errors?.email">Invalid Email</span>
+          <span class="error-message" *ngIf="formValues.email.errors?.required">Email is required</span>
+        </div>
+      </div>
+
+      <div class="form-group col">
+        <label>Phone</label>
+        <input formControlName="mobile" minlength="10" maxlength="10" type="number">
+        <div *ngIf="formValues.mobile.invalid && (formValues.mobile.dirty || formValues.mobile.touched)">
+          <span class="error-message" *ngIf="formValues.mobile.errors?.pattern">Invalid Phone Number</span>
+          <span class="error-message" *ngIf="formValues.mobile.errors?.required">Phone Number is required</span>
+        </div>
+      </div>
+
+      <div class="form-group col">
+        <label>Company</label>
+        <input formControlName="company" type="text">
+        <div *ngIf="formValues.company.invalid && (formValues.company.dirty || formValues.company.touched)">
+          <span class="error-message">Company is required</span>
+        </div>
+      </div>
+
+      <div class="form-group col">
+        <label>Gender</label>
+        <div>
+          <input formControlName="gender" id="male" name="gender" type="radio" value="male">
+          <label style="padding: 2px;" for="male">Male</label>
+        </div>
+        <div>
+          <input formControlName="gender" id="female" name="gender" type="radio" value="female">
+          <label style="padding: 2px;" for="female">Female</label>
+        </div>
+        <div *ngIf="formValues.gender.invalid && (formValues.gender.dirty || formValues.gender.touched)">
+          <span class="error-message">Gender is required</span>
+        </div>
+      </div>
+
+      <div class="form-group col">
+        <label>DOB</label>
+        <input formControlName="dob" type="date">
+        <div *ngIf="formValues.dob.invalid && (formValues.dob.dirty || formValues.dob.touched)">
+          <span class="error-message">DOB is required</span>
+        </div>
+      </div>
+
+      <div class="form-group col">
+        <label>Password</label>
+        <input formControlName="password" type="password">
+        <div *ngIf="formValues.password.invalid && (formValues.password.dirty || formValues.password.touched)">
+          <span class="error-message">Password is required</span>
+        </div>
+      </div>
+
+      <div class="form-group col">
+        <label>Confirm Password</label>
+        <input formControlName="confirmPassword" type="password">
+        <div
+          *ngIf="formValues.confirmPassword.invalid && (formValues.confirmPassword.dirty || formValues.confirmPassword.touched)">
+          <span class="error-message">Confirm Password is required</span>
+        </div>
+      </div>
+      <div class="text-center">
+        <button class="button-class">Register</button>
+        <button class="button-class">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+
+  <!-- table-code -->
+
+  <div>
+    <table>
+      <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Company</th>
+        <th>DOB</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      <tr *ngFor="let user of usersArray;let i = index">
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.mobile}}</td>
+        <td>{{user.company}}</td>
+        <td>{{user.dob}}</td>
+        <td><button class="button-class-small" (click)="editRow(user,i)">Edit</button></td>
+        <td><button class="button-class-small" (click)="deleteRow(user)">Delete</button></td>
+      </tr>
+    </table>
+  </div>
+
+</div>
